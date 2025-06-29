@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Serveur d'Écoute de Requêtes</title>
+        <link rel="stylesheet" href="/style.css"> </head>
+    <body>
+        <nav>
+            <a href="/">Requêtes Reçues</a>
+            <a href="/post.html">Envoyer une Requête POST</a>
+        </nav>
+        <h1>Requêtes Reçues</h1>
+        <p>Ce serveur enregistre toutes les requêtes qu'il reçoit. La liste est
+            mise à jour automatiquement quand une nouvelle requête arrive (pas
+            besoin de rafraîchir la page).</p>
+        <div id="requests-container"></div>
+
+        <script>
+        // Fonction pour récupérer et afficher les requêtes
+        async function fetchRequests() {
+            try {
+                const response = await fetch('/api/requests');
+                const requests = await response.json();
+                const container = document.getElementById('requests-container');
+                container.innerHTML = ''; // Vide le contenu actuel
+
+                if (requests.length === 0) {
+                    container.innerHTML = '<p>Aucune requête reçue pour le moment.</p>';
+                } else {
+                    requests.forEach(request => {
+                        const requestDiv = document.createElement('div');
+                        requestDiv.classList.add('request-item');
+                        requestDiv.innerHTML = `
+                            <div class="request-header">
+                                [${request.timestamp}] <strong>${request.method}</strong> ${request.url} from ${request.ip}
+                            </div>
+                            <pre>${JSON.stringify(request, null, 2)}</pre>
+                        `;
+                        container.appendChild(requestDiv);
+                    });
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des requêtes:', error);
+                document.getElementById('requests-container').innerHTML = '<p style="color: red;">Erreur lors du chargement des requêtes.</p>';
+            }
+        }
+
+        // Récupère les requêtes initiales
+        fetchRequests();
+
+        // Rafraîchit les requêtes toutes les 2 secondes (simule une mise à jour en direct)
+        setInterval(fetchRequests, 2000);
+    </script>
+    </body>
+</html>

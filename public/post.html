@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Envoyer une Requête POST</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <nav>
+            <a href="/">Requêtes Reçues</a>
+            <a href="/post.html">Envoyer une Requête POST</a>
+        </nav>
+        <h1>Envoyer une Requête POST</h1>
+        <p>Utilisez ce formulaire pour envoyer une requête POST à n'importe
+            quelle URL (même à ce serveur, par exemple, à
+            <code>/api/post-test</code>).</p>
+
+        <form id="postForm">
+            <label for="url">URL de destination :</label>
+            <input type="text" id="url" name="url" value="/api/post-test"
+                required><br>
+
+            <label for="method">Méthode HTTP:</label>
+            <select id="method" name="method">
+                <option value="POST">POST</option>
+                <option value="GET">GET</option>
+                <option value="PUT">PUT</option>
+                <option value="DELETE">DELETE</option>
+            </select><br><br>
+
+            <label for="body">Corps de la requête (JSON) :</label>
+            <textarea id="body" name="body"
+                placeholder='Ex: {"message": "Bonjour Monde", "valeur": 123}'></textarea><br>
+
+            <button type="submit">Envoyer la Requête</button>
+        </form>
+
+        <h2>Réponse de la Requête</h2>
+        <div class="response-box" id="responseDisplay">
+            <p>La réponse s'affichera ici...</p>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
