@@ -7,10 +7,13 @@
         <link rel="stylesheet" href="/style.css">
     </head>
     <body>
-        <nav>
-            <a href="/">Requêtes Reçues</a>
-            <a href="/post.html">Envoyer une Requête POST</a>
-        </nav>
+        <header>
+            <nav>
+                <a href="/">Requêtes Reçues</a>
+                <a href="/post.html" class="active">Envoyer une Requête POST</a>
+            </nav>
+        </header>
+        <main>
         <h1>Envoyer une Requête POST</h1>
         <p>Utilisez ce formulaire pour envoyer une requête POST à n'importe
             quelle URL (même à ce serveur, par exemple, à
@@ -40,7 +43,7 @@
         <div class="response-box" id="responseDisplay">
             <p>La réponse s'affichera ici...</p>
         </div>
-
+        </main>
         <script src="script.js"></script>
     </body>
 </html>

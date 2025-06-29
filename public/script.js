@@ -8,7 +8,7 @@ document
     const bodyText = document.getElementById("body").value;
     const responseDisplay = document.getElementById("responseDisplay");
 
-    responseDisplay.innerHTML = "<p>Envoi en cours...</p>";
+    responseDisplay.innerHTML = "<p style='color:#b30000;'>Envoi en cours...</p>";
 
     try {
       let options = { method: method };
@@ -34,14 +34,14 @@ document
       const responseText = await response.text(); // Récupère la réponse comme texte
 
       let formattedResponse = `
-                    <h3>Statut : ${response.status} ${response.statusText}</h3>
-                    <h3>Headers :</h3>
+                    <h3 style='color:#b30000;'>Statut : ${response.status} ${response.statusText}</h3>
+                    <h3 style='color:#b30000;'>Headers :</h3>
                     <pre>${JSON.stringify(
                       Object.fromEntries(response.headers.entries()),
                       null,
                       2
                     )}</pre>
-                    <h3>Corps de la Réponse :</h3>
+                    <h3 style='color:#b30000;'>Corps de la Réponse :</h3>
                     <pre>${responseText || "Aucun corps de réponse."}</pre>
                 `;
 
@@ -49,7 +49,7 @@ document
     } catch (error) {
       console.error("Erreur lors de l'envoi de la requête:", error);
       responseDisplay.innerHTML =
-        '<p style="color: red;">Erreur lors de l\'envoi de la requête: ' +
+        '<p style="color: #b30000;">Erreur lors de l\'envoi de la requête: ' +
         error.message +
         "</p>";
     }

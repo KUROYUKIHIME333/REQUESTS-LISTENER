@@ -4,18 +4,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Serveur d'Écoute de Requêtes</title>
-        <link rel="stylesheet" href="/style.css"> </head>
+        <link rel="stylesheet" href="/style.css"> 
+    </head>
     <body>
-        <nav>
-            <a href="/">Requêtes Reçues</a>
-            <a href="/post.html">Envoyer une Requête POST</a>
-        </nav>
+        <header>
+            <nav>
+                <a href="/" class="active">Requêtes Reçues</a>
+                <a href="/post.html">Envoyer une Requête POST</a>
+            </nav>
+        </header>
+        <main>
         <h1>Requêtes Reçues</h1>
         <p>Ce serveur enregistre toutes les requêtes qu'il reçoit. La liste est
             mise à jour automatiquement quand une nouvelle requête arrive (pas
             besoin de rafraîchir la page).</p>
         <div id="requests-container"></div>
-
+        </main>
         <script>
         // Fonction pour récupérer et afficher les requêtes
         async function fetchRequests() {
